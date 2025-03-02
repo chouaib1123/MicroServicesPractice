@@ -1,0 +1,31 @@
+services:
+  api-gateway:
+    build: ./api-gateway
+    environment:
+      PRODUCT_SERVICE_URL: http://product-service:8080
+    ports:
+      - "8091:8081"
+
+  product-service:
+    build: ./ProductService
+    ports:
+      - "8090:8080"
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: "postgresql+psycopg2://postgres:chouaib@db:5432/test33"
+
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: chouaib
+      POSTGRES_DB: test33
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - postgredata:/var/lib/postgres/data
+
+volumes:
+  postgredata:

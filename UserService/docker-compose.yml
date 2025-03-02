@@ -1,0 +1,25 @@
+services:
+  db:
+    container_name: mydb
+    image: postgres:11
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: chouaib
+      POSTGRES_DB: users
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgresdata:/var/bin/data
+
+  userservice:
+    container_name: userservice
+    build: .
+    depends_on:
+      - db
+    ports:
+      - "8005:8000"
+    environment:
+      DATABASE_URL: "postgresql+psycopg2://postgres:chouaib@db:5432/users"
+
+volumes:
+  postgresdata:
