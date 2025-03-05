@@ -1,7 +1,7 @@
-from app.utils import product_service
+from app.Utils.utils import product_service
 from fastapi import APIRouter
 from typing import List
-from app.schema import ProductSchema, ProductResponseSchema , ProductUpdateSchema
+from app.Schemas.ProductSchema import ProductSchema, ProductResponseSchema , ProductUpdateSchema
 from uuid import UUID
 
 router = APIRouter()

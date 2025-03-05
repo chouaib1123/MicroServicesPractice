@@ -1,8 +1,8 @@
-from app.model import ProductModel
+from app.Models.ProductModel import ProductModel
 from sqlalchemy.orm import Session
 import uuid
 from sqlalchemy.exc import SQLAlchemyError
-from sqlalchemy import select
+
 
 class ProductRepository:
     def __init__(self, db: Session):

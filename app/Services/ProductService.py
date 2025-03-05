@@ -1,7 +1,7 @@
-from app.model import ProductModel
-from app.schema import ProductSchema,ProductResponseSchema,ProductUpdateSchema
+from app.Models.ProductModel import ProductModel
+from app.Schemas.ProductSchema import ProductSchema,ProductResponseSchema,ProductUpdateSchema
 from sqlalchemy.orm import Session
-from app.repository import ProductRepository
+from app.Respositories.ProductRepository import ProductRepository
 from typing import List
 from uuid import UUID
 from fastapi import HTTPException , status
